@@ -1,0 +1,13 @@
+GoldenGate Password GUI and Console Management
+
+  GoldenGatePassword is an helper to construct Password in compatible way for GoldenGate products.
+
+Dependency
+
+  This project used Swing for GUI and GoldenGate Common Crypto package for cryptographic support.
+
+Specificities
+
+	Two ways are available to use it: through the graphical interface (GgUiPassword) or through command line (GgPassword).
+
+

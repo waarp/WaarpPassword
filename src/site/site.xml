@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="GoldenGate Exec">
+  <publishDate/><version/>
+  <bannerLeft>
+    <name>GoldenGate Project</name>
+    <src>images/goldengatesmall.jpg</src>
+    <href>http://openr66.free.fr/</href>
+  </bannerLeft>
+  <body>
+    <links>
+    	<item name="GoldenGate" href="http://openr66.free.fr/"/>
+    </links>
+  	<menu name="GoldenGate Password GUI and Console Management">
+  		<item name="Overview of GoldenGate Password" href="index.html"/>
+  		<item name="Options for GoldenGate Password GUI and Console Management" href="options.html"/>
+  		<item name="Main page of GoldenGate Password" href="../GoldenGatePassword.html"/>
+  		<item name="GoldenGate Main Project" href="../"/>
+  	</menu>
+    <menu ref="reports"/>
+  </body>
+</project>
