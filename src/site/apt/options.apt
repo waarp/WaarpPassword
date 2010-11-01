@@ -17,6 +17,7 @@ GUI Usage (or through command line)
     B) Password with Crypto Key
 
         * Then you need to get a Password:
+
         	1) Enter a password in the Password field
 
         	  * From Command Line: -pwd or -cpwd or nothing then asked from input

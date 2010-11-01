@@ -34,6 +34,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 /**
+ * Console Command Line Main class to provide Password Management for GoldenGate Products.
+ *
  * @author Frederic Bregier
  *
  */
