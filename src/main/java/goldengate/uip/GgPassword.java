@@ -278,7 +278,7 @@ public class GgPassword {
      */
     public void setClearPassword(String passwd) throws Exception {
         clearPassword = passwd;
-        cryptedPassword = currentKey.cryptToString(clearPassword);
+        cryptedPassword = currentKey.cryptToBase64(clearPassword);
     }
 
     /**
@@ -338,7 +338,7 @@ public class GgPassword {
      */
     public void setCryptedPassword(String cryptedPassword) throws Exception {
         this.cryptedPassword = cryptedPassword;
-        this.clearPassword = currentKey.decryptStringInString(cryptedPassword);
+        this.clearPassword = currentKey.decryptBase64InString(cryptedPassword);
     }
 
     /**
