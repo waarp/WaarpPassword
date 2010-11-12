@@ -31,6 +31,10 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 */
 public class GgUiPassword extends javax.swing.JFrame {
 
+    /**
+     * 
+     */
+    private static final long serialVersionUID = -4276191288898099362L;
     private JMenuItem helpMenuItem;
     private JMenu jMenu5;
     private AbstractAction saveAsKeyAction;
@@ -154,6 +158,7 @@ public class GgUiPassword extends javax.swing.JFrame {
                 }
             });
             this.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+            this.setTitle("GoldenGate Paswword GUI");
             {
                 jTextFieldKeyFile = new JTextField();
                 jTextFieldKeyFile.setText("Key File");
@@ -372,6 +377,11 @@ public class GgUiPassword extends javax.swing.JFrame {
     private AbstractAction getExitAction() {
         if(exitAction == null) {
             exitAction = new AbstractAction("Exit", null) {
+                /**
+                 * 
+                 */
+                private static final long serialVersionUID = 7484447837851868127L;
+
                 public void actionPerformed(ActionEvent evt) {
                     //TODO FIXME Add control on exit (save)
                     if (passwordModified) {
@@ -419,6 +429,11 @@ public class GgUiPassword extends javax.swing.JFrame {
     private AbstractAction getOpenKeyAction() {
         if(openKeyAction == null) {
             openKeyAction = new AbstractAction("Open Key", null) {
+                /**
+                 * 
+                 */
+                private static final long serialVersionUID = -3840578648343599999L;
+
                 public void actionPerformed(ActionEvent evt) {
                     jTextFieldPasswordFile.setText("");
                     jTextFieldCryptedPassword.setText("");
@@ -445,6 +460,11 @@ public class GgUiPassword extends javax.swing.JFrame {
     private AbstractAction getNewKeyAction() {
         if(newKeyAction == null) {
             newKeyAction = new AbstractAction("New Key", null) {
+                /**
+                 * 
+                 */
+                private static final long serialVersionUID = 10107370851157816L;
+
                 public void actionPerformed(ActionEvent evt) {
                     try {
                         ggPassword.createNewKey();
@@ -463,6 +483,11 @@ public class GgUiPassword extends javax.swing.JFrame {
     private AbstractAction getSaveKeyAction() {
         if(saveKeyAction == null) {
             saveKeyAction = new AbstractAction("Save Key", null) {
+                /**
+                 * 
+                 */
+                private static final long serialVersionUID = 4400661431842092244L;
+
                 public void actionPerformed(ActionEvent evt) {
                     try {
                         ggPassword.saveKey(null);
@@ -480,6 +505,11 @@ public class GgUiPassword extends javax.swing.JFrame {
     private AbstractAction getSaveAsKeyAction() {
         if(saveAsKeyAction == null) {
             saveAsKeyAction = new AbstractAction("Save Key As...", null) {
+                /**
+                 * 
+                 */
+                private static final long serialVersionUID = 565842888109816432L;
+
                 public void actionPerformed(ActionEvent evt) {
                     chooserKeyFile.setDialogType(JFileChooser.SAVE_DIALOG);
                     int response = chooserKeyFile.showSaveDialog(rootPane);
@@ -510,6 +540,11 @@ public class GgUiPassword extends javax.swing.JFrame {
     private AbstractAction getLoadPswdAction() {
         if(loadPswdAction == null) {
             loadPswdAction = new AbstractAction("Load", null) {
+                /**
+                 * 
+                 */
+                private static final long serialVersionUID = -3100726446117809610L;
+
                 public void actionPerformed(ActionEvent evt) {
                     chooserPwdFile.setDialogType(JFileChooser.OPEN_DIALOG);
                     int response = chooserPwdFile.showOpenDialog(rootPane);
@@ -539,6 +574,11 @@ public class GgUiPassword extends javax.swing.JFrame {
     private AbstractAction getSavePaswdAction() {
         if(savePaswdAction == null) {
            savePaswdAction = new AbstractAction("Save", null) {
+                /**
+             * 
+             */
+            private static final long serialVersionUID = -5712120697650940845L;
+
                 public void actionPerformed(ActionEvent evt) {
                     chooserPwdFile.setDialogType(JFileChooser.SAVE_DIALOG);
                     int response = chooserPwdFile.showSaveDialog(rootPane);
@@ -566,6 +606,11 @@ public class GgUiPassword extends javax.swing.JFrame {
     private AbstractAction getHelpAction() {
         if(helpAction == null) {
             helpAction = new AbstractAction("Help", null) {
+                /**
+                 * 
+                 */
+                private static final long serialVersionUID = -8528091873190483826L;
+
                 public void actionPerformed(ActionEvent evt) {
                     getJDialogHelp().setVisible(true);
                 }
@@ -636,6 +681,11 @@ public class GgUiPassword extends javax.swing.JFrame {
     private AbstractAction getCloseHelpAction() {
         if(closeHelpAction == null) {
             closeHelpAction = new AbstractAction("Close", null) {
+                /**
+                 * 
+                 */
+                private static final long serialVersionUID = -2310092372166868386L;
+
                 public void actionPerformed(ActionEvent evt) {
                     getJDialogHelp().dispose();
                 }
