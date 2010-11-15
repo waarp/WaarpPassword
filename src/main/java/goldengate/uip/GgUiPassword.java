@@ -158,7 +158,8 @@ public class GgUiPassword extends javax.swing.JFrame {
                 }
             });
             this.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
-            this.setTitle("GoldenGate Paswword GUI");
+            this.setTitle("GoldenGate Password GUI");
+            this.setLocale(new java.util.Locale("en", "GB"));
             {
                 jTextFieldKeyFile = new JTextField();
                 jTextFieldKeyFile.setText("Key File");
