@@ -5,7 +5,7 @@
   <artifactId>GoldenGatePassword</artifactId>
   <packaging>jar</packaging>
   <name>GoldenGate Password Management GUI and Console</name>
-  <version>1.0.0</version>
+  <version>1.0.1</version>
   <description>GoldenGate Password Management GUI and Console</description>
   <url>http://openr66.free.fr/GoldenGatePassword</url>
   <inceptionYear>2010</inceptionYear>
@@ -96,7 +96,7 @@
     <dependency>
   		<groupId>GoldenGate</groupId>
   		<artifactId>GoldenGateCommon</artifactId>
-  		<version>1.0.9</version>
+  		<version>1.1.0</version>
   	</dependency>
     <dependency>
       <groupId>ch.qos.logback</groupId>
