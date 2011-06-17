@@ -44,13 +44,13 @@ public class GgPassword {
     public static boolean clearPasswordView = false;
     public static String HELPOPTIONS = "Options available\r\n"+
         "* -ki file to specify the Key File by default\r\n"+
-        "* -ko file to specify a new Key File to build and save\r\n"+
-        "* -pi file to specify a GGP File by default(password)\r\n"+
+        "* -ko file to specify a new Key File to build and save\r\n\r\n"+
         "* -des to specify DES format (default)\r\n"+
-        "* -blf to specify BlowFish format\r\n"+
-        "* -pwd to specify a clear password as entry\r\n"+
-        "* -cpwd to specify a crypted password as entry\r\n"+
-        "* -po file to specify a GGP File as output\r\n"+
+        "* -blf to specify BlowFish format\r\n\r\n"+
+        "* -pi file to specify a GGP File by default(password)\r\n"+
+        "* -pwd to specify a clear ggp password as entry\r\n"+
+        "* -cpwd to specify a crypted ggp password as entry\r\n"+
+        "* -po file to specify a GGP File as output for the password\r\n"+
         "* -clear to specify uncrypted password shown as clear text";
     public static String GGPEXTENSION = "ggp";
     public static String ki = null;
@@ -79,6 +79,11 @@ public class GgPassword {
             System.exit(2);
         }
         GgPassword ggPassword = new GgPassword();
+        if (po == null && pi == null) {
+            // stop
+            System.err.println("Key written");
+            System.exit(0);
+        }
         if (ggPassword.clearPassword == null || ggPassword.clearPassword.length() == 0) {
             System.err.println("Password to crypt:");
             String newp = ggPassword.readString();
@@ -100,6 +105,10 @@ public class GgPassword {
 
     public static boolean loadOptions(String[] args) {
         int i = 0;
+        if (args.length == 0) {
+            System.err.println(HELPOPTIONS);
+            return false;
+        }
         for (i = 0; i < args.length; i++) {
             if (args[i].equalsIgnoreCase("-ki")) {
                 i++;
@@ -160,6 +169,21 @@ public class GgPassword {
                 return false;
             }
         }
+        if (ki == null && ko == null) {
+            System.err.println("You must specify one of ki or ko options");
+            return false;
+        }
+        if (ki == null) {
+            ki = ko;
+        }
+        if ((ki == null) && (po != null || pi != null)) {
+            System.err.println("If pi or po options are set, ki or ko options must be set also!\n");
+            return false;
+        }
+        if (pi == null && po == null && (pwd != null || cpwd != null)) {
+            System.err.println("Cannot create a password if no password GGP file is specified with pi or po options");
+            return false;
+        }
         return true;
     }
 
@@ -168,6 +192,10 @@ public class GgPassword {
             currentKey = new Des();
         } else {
             currentKey = new Blowfish();
+        }
+        if (ko != null) {
+            createNewKey();
+            saveKey(new File(ko));
         }
         if (ki != null) {
             loadKey(new File(ki));
@@ -181,10 +209,6 @@ public class GgPassword {
         }
         if (cpwd != null) {
             setCryptedPassword(cpwd);
-        }
-        if (ko != null) {
-            createNewKey();
-            saveKey(new File(ko));
         }
         if (po != null) {
             setPasswordFile(new File(po));
