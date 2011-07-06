@@ -101,21 +101,21 @@
     <dependency>
       <groupId>ch.qos.logback</groupId>
       <artifactId>logback-access</artifactId>
-      <version>0.9.28</version>
+      <version>0.9.29</version>
       <scope>compile</scope>
       <optional>true</optional>
     </dependency>
     <dependency>
       <groupId>ch.qos.logback</groupId>
       <artifactId>logback-classic</artifactId>
-      <version>0.9.28</version>
+      <version>0.9.29</version>
       <scope>compile</scope>
       <optional>true</optional>
     </dependency>
     <dependency>
       <groupId>ch.qos.logback</groupId>
       <artifactId>logback-core</artifactId>
-      <version>0.9.28</version>
+      <version>0.9.29</version>
       <scope>compile</scope>
       <optional>true</optional>
     </dependency>
