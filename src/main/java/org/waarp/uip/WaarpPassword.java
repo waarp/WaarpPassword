@@ -1,29 +1,25 @@
 /**
-   This file is part of GoldenGate Project (named also GoldenGate or GG).
+   This file is part of Waarp Project.
 
    Copyright 2009, Frederic Bregier, and individual contributors by the @author
    tags. See the COPYRIGHT.txt in the distribution for a full listing of
    individual contributors.
 
-   All GoldenGate Project is free software: you can redistribute it and/or 
+   All Waarp Project is free software: you can redistribute it and/or 
    modify it under the terms of the GNU General Public License as published 
    by the Free Software Foundation, either version 3 of the License, or
    (at your option) any later version.
 
-   GoldenGate is distributed in the hope that it will be useful,
+   Waarp is distributed in the hope that it will be useful,
    but WITHOUT ANY WARRANTY; without even the implied warranty of
    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
    GNU General Public License for more details.
 
    You should have received a copy of the GNU General Public License
-   along with GoldenGate .  If not, see <http://www.gnu.org/licenses/>.
+   along with Waarp .  If not, see <http://www.gnu.org/licenses/>.
  */
-package goldengate.uip;
+package org.waarp.uip;
 
-import goldengate.common.crypto.Blowfish;
-import goldengate.common.crypto.Des;
-import goldengate.common.crypto.KeyObject;
-import goldengate.common.exception.CryptoException;
 
 import java.io.BufferedReader;
 import java.io.DataInputStream;
@@ -33,13 +29,18 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+import org.waarp.common.crypto.Blowfish;
+import org.waarp.common.crypto.Des;
+import org.waarp.common.crypto.KeyObject;
+import org.waarp.common.exception.CryptoException;
+
 /**
  * Console Command Line Main class to provide Password Management for GoldenGate Products.
  *
  * @author Frederic Bregier
  *
  */
-public class GgPassword {
+public class WaarpPassword {
     public static boolean desModel = true;
     public static boolean clearPasswordView = false;
     public static String HELPOPTIONS = "Options available\r\n"+
@@ -74,31 +75,31 @@ public class GgPassword {
      */
     public static void main(String[] args) throws Exception {
         // TODO Auto-generated method stub
-        if (! GgPassword.loadOptions(args)) {
+        if (! WaarpPassword.loadOptions(args)) {
             // Bad options
             System.exit(2);
         }
-        GgPassword ggPassword = new GgPassword();
+        WaarpPassword waarpPassword = new WaarpPassword();
         if (po == null && pi == null) {
             // stop
             System.err.println("Key written");
             System.exit(0);
         }
-        if (ggPassword.clearPassword == null || ggPassword.clearPassword.length() == 0) {
+        if (waarpPassword.clearPassword == null || waarpPassword.clearPassword.length() == 0) {
             System.err.println("Password to crypt:");
-            String newp = ggPassword.readString();
+            String newp = waarpPassword.readString();
             if (newp == null || newp.length() == 0) {
                 System.err.println("No password as input");
                 System.exit(4);
             }
-            ggPassword.setClearPassword(newp);
+            waarpPassword.setClearPassword(newp);
             if (po != null) {
-                ggPassword.setPasswordFile(new File(po));
-                ggPassword.savePasswordFile();
+                waarpPassword.setPasswordFile(new File(po));
+                waarpPassword.savePasswordFile();
             }
             if (clearPasswordView) {
-                System.err.println("ClearPwd: "+ggPassword.getClearPassword());
-                System.err.println("CryptedPwd: "+ggPassword.getCryptedPassword());
+                System.err.println("ClearPwd: "+waarpPassword.getClearPassword());
+                System.err.println("CryptedPwd: "+waarpPassword.getCryptedPassword());
             }
         }
     }
@@ -187,7 +188,7 @@ public class GgPassword {
         return true;
     }
 
-    public GgPassword() throws Exception {
+    public WaarpPassword() throws Exception {
         if (desModel) {
             currentKey = new Des();
         } else {

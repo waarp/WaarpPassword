@@ -1,5 +1,5 @@
 // DO NOT MODIFY - WILL BE OVERWRITTEN DURING THE BUILD PROCESS
-package goldengate.uip;
+package org.waarp.uip;
 /** Provides the version information of GoldenGate Password. */
 public final class Version {
  /** The version identifier. */
