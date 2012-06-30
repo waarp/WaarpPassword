@@ -1,13 +1,13 @@
-GoldenGate Password GUI and Console Management
+Waarp Password GUI and Console Management
 
-  GoldenGatePassword is an helper to construct Password in compatible way for GoldenGate products.
+  WaarpPassword is an helper to construct Password in compatible way for Waarp products.
 
 Dependency
 
-  This project used Swing for GUI and GoldenGate Common Crypto package for cryptographic support.
+  This project used Swing for GUI and Waarp Common Crypto package for cryptographic support.
 
 Specificities
 
-	Two ways are available to use it: through the graphical interface (GgUiPassword) or through command line (GgPassword).
+	Two ways are available to use it: through the graphical interface (WaarpUiPassword) or through command line (WaarpPassword).
 
 

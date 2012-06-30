@@ -1,27 +1,24 @@
 /**
-   This file is part of GoldenGate Project (named also GoldenGate or GG).
+   This file is part of Waarp Project.
 
    Copyright 2009, Frederic Bregier, and individual contributors by the @author
    tags. See the COPYRIGHT.txt in the distribution for a full listing of
    individual contributors.
 
-   All GoldenGate Project is free software: you can redistribute it and/or 
+   All Waarp Project is free software: you can redistribute it and/or 
    modify it under the terms of the GNU General Public License as published 
    by the Free Software Foundation, either version 3 of the License, or
    (at your option) any later version.
 
-   GoldenGate is distributed in the hope that it will be useful,
+   Waarp is distributed in the hope that it will be useful,
    but WITHOUT ANY WARRANTY; without even the implied warranty of
    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
    GNU General Public License for more details.
 
    You should have received a copy of the GNU General Public License
-   along with GoldenGate .  If not, see <http://www.gnu.org/licenses/>.
+   along with Waarp .  If not, see <http://www.gnu.org/licenses/>.
  */
-package goldengate.uip;
-import goldengate.common.crypto.Blowfish;
-import goldengate.common.crypto.Des;
-import goldengate.common.exception.CryptoException;
+package org.waarp.uip;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.FocusAdapter;
@@ -34,6 +31,10 @@ import java.io.IOException;
 import javax.swing.*;
 import javax.swing.border.BevelBorder;
 import javax.swing.filechooser.FileNameExtensionFilter;
+
+import org.waarp.common.crypto.Blowfish;
+import org.waarp.common.crypto.Des;
+import org.waarp.common.exception.CryptoException;
 
 /**
  * GUI for GoldenGate Password Management for GoldenGate products.
@@ -49,7 +50,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 * THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
 * LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
 */
-public class GgUiPassword extends javax.swing.JFrame {
+public class WaarpUiPassword extends javax.swing.JFrame {
 
     /**
      * 
@@ -92,27 +93,27 @@ public class GgUiPassword extends javax.swing.JFrame {
     private JTextPane jTextPaneHelp;
     private JButton jButtonHelp;
     private JDialog jDialogHelp;
-    private GgPassword ggPassword;
+    private WaarpPassword waarpPassword;
     boolean passwordModified = false;
 
     /**
     * Auto-generated main method to display this JFrame
     */
     public static void main(String[] args) {
-        if (! GgPassword.loadOptions(args)) {
+        if (! WaarpPassword.loadOptions(args)) {
             // Bad options
             System.exit(2);
         }
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                GgUiPassword inst = new GgUiPassword();
+                WaarpUiPassword inst = new WaarpUiPassword();
                 inst.setLocationRelativeTo(null);
                 inst.setVisible(true);
             }
         });
     }
 
-    public GgUiPassword() {
+    public WaarpUiPassword() {
         super();
 
         chooserKeyFile = new JFileChooser();
@@ -124,13 +125,13 @@ public class GgUiPassword extends javax.swing.JFrame {
 
         chooserPwdFile = new JFileChooser();
         filterPwdKey = new FileNameExtensionFilter(
-                "GoldenGate Password Files ("+GgPassword.GGPEXTENSION+")",
-                GgPassword.GGPEXTENSION);
+                "GoldenGate Password Files ("+WaarpPassword.GGPEXTENSION+")",
+                WaarpPassword.GGPEXTENSION);
         chooserPwdFile.setFileFilter(filterPwdKey);
         chooserPwdFile.setFileSelectionMode(JFileChooser.FILES_ONLY);
 
         try {
-            ggPassword = new GgPassword();
+            waarpPassword = new WaarpPassword();
         } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -142,19 +143,19 @@ public class GgUiPassword extends javax.swing.JFrame {
     }
 
     private void initFromGgPassword() {
-        File keyFile = ggPassword.getKeyFile();
+        File keyFile = waarpPassword.getKeyFile();
         if (keyFile != null) {
             jTextFieldKeyFile.setText(keyFile.getAbsolutePath());
             enableMenuWithKey();
         }
-        File pFile = ggPassword.getPasswordFile();
+        File pFile = waarpPassword.getPasswordFile();
         if (pFile != null) {
             jTextFieldPasswordFile.setText(pFile.getAbsolutePath());
         }
-        String clpwd = ggPassword.getClearPassword();
+        String clpwd = waarpPassword.getClearPassword();
         if (clpwd != null) {
             setUncryptedPassword(clpwd);
-            clpwd = ggPassword.getCryptedPassword();
+            clpwd = waarpPassword.getCryptedPassword();
             jTextFieldCryptedPassword.setText(clpwd);
         }
     }
@@ -206,19 +207,19 @@ public class GgUiPassword extends javax.swing.JFrame {
                                     null)));
                 }
                 {
-                    if (GgPassword.clearPasswordView) {
+                    if (WaarpPassword.clearPasswordView) {
                         jPasswordFieldTxt = new JTextField();
                         jPasswordFieldTxt.addFocusListener(new FocusAdapter() {
                             public void focusLost(FocusEvent evt) {
                                 String paswd = new String(jPasswordFieldTxt.getText());
-                                if (! paswd.equals(ggPassword.getClearPassword())) {
+                                if (! paswd.equals(waarpPassword.getClearPassword())) {
                                     try {
-                                        ggPassword.setClearPassword(new String(paswd));
+                                        waarpPassword.setClearPassword(new String(paswd));
                                     } catch (Exception e) {
                                         // TODO Auto-generated catch block
                                         e.printStackTrace();
                                     }
-                                    jTextFieldCryptedPassword.setText(ggPassword.getCryptedPassword());
+                                    jTextFieldCryptedPassword.setText(waarpPassword.getCryptedPassword());
                                     passwordModified = true;
                                 }
                             }
@@ -228,14 +229,14 @@ public class GgUiPassword extends javax.swing.JFrame {
                         jPasswordField.addFocusListener(new FocusAdapter() {
                             public void focusLost(FocusEvent evt) {
                                 String paswd = new String(jPasswordField.getPassword());
-                                if (! paswd.equals(ggPassword.getClearPassword())) {
+                                if (! paswd.equals(waarpPassword.getClearPassword())) {
                                     try {
-                                        ggPassword.setClearPassword(new String(paswd));
+                                        waarpPassword.setClearPassword(new String(paswd));
                                     } catch (Exception e) {
                                         // TODO Auto-generated catch block
                                         e.printStackTrace();
                                     }
-                                    jTextFieldCryptedPassword.setText(ggPassword.getCryptedPassword());
+                                    jTextFieldCryptedPassword.setText(waarpPassword.getCryptedPassword());
                                     passwordModified = true;
                                 }
                             }
@@ -247,22 +248,22 @@ public class GgUiPassword extends javax.swing.JFrame {
                     jTextFieldCryptedPassword.addFocusListener(new FocusAdapter() {
                         public void focusLost(FocusEvent evt) {
                             String paswd = jTextFieldCryptedPassword.getText();
-                            if (! paswd.equals(ggPassword.getCryptedPassword())) {
+                            if (! paswd.equals(waarpPassword.getCryptedPassword())) {
                                 try {
-                                    ggPassword.setCryptedPassword(paswd);
+                                    waarpPassword.setCryptedPassword(paswd);
                                 } catch (Exception e1) {
                                     // TODO Auto-generated catch block
                                     e1.printStackTrace();
                                 }
-                                setUncryptedPassword(ggPassword.getClearPassword());
-                                jTextFieldCryptedPassword.setText(ggPassword.getCryptedPassword());
+                                setUncryptedPassword(waarpPassword.getClearPassword());
+                                jTextFieldCryptedPassword.setText(waarpPassword.getCryptedPassword());
                                 passwordModified = true;
                             }
                         }
                     }
                     );
                 }
-                if (GgPassword.clearPasswordView) {
+                if (WaarpPassword.clearPasswordView) {
                     jPanel1Layout.setHorizontalGroup(jPanel1Layout.createSequentialGroup()
                             .addContainerGap()
                             .addGroup(jPanel1Layout.createParallelGroup()
@@ -416,7 +417,7 @@ public class GgUiPassword extends javax.swing.JFrame {
     }
 
     private String getUncryptedPassword() {
-        if (GgPassword.clearPasswordView) {
+        if (WaarpPassword.clearPasswordView) {
             return jPasswordFieldTxt.getText();
         } else {
             return new String(jPasswordField.getPassword());
@@ -424,7 +425,7 @@ public class GgUiPassword extends javax.swing.JFrame {
     }
 
     private void setUncryptedPassword(String passwd) {
-        if (GgPassword.clearPasswordView) {
+        if (WaarpPassword.clearPasswordView) {
             jPasswordFieldTxt.setText(passwd);
         } else {
             jPasswordField.setText(passwd);
@@ -433,12 +434,12 @@ public class GgUiPassword extends javax.swing.JFrame {
 
     private void updateCryptedPassword() {
         try {
-            ggPassword.setClearPassword(getUncryptedPassword());
+            waarpPassword.setClearPassword(getUncryptedPassword());
         } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        jTextFieldCryptedPassword.setText(ggPassword.getCryptedPassword());
+        jTextFieldCryptedPassword.setText(waarpPassword.getCryptedPassword());
         passwordModified = true;
     }
 
@@ -464,7 +465,7 @@ public class GgUiPassword extends javax.swing.JFrame {
                         File file = chooserKeyFile.getSelectedFile();
                         jTextFieldKeyFile.setText(file.getAbsolutePath());
                         try {
-                            ggPassword.loadKey(file);
+                            waarpPassword.loadKey(file);
                             updateCryptedPassword();
                             enableMenuWithKey();
                         } catch (CryptoException e) {
@@ -488,7 +489,7 @@ public class GgUiPassword extends javax.swing.JFrame {
 
                 public void actionPerformed(ActionEvent evt) {
                     try {
-                        ggPassword.createNewKey();
+                        waarpPassword.createNewKey();
                     } catch (Exception e) {
                         // TODO Auto-generated catch block
                         e.printStackTrace();
@@ -511,7 +512,7 @@ public class GgUiPassword extends javax.swing.JFrame {
 
                 public void actionPerformed(ActionEvent evt) {
                     try {
-                        ggPassword.saveKey(null);
+                        waarpPassword.saveKey(null);
                     } catch (CryptoException e) {
                         // TODO Auto-generated catch block
                         e.printStackTrace();
@@ -537,7 +538,7 @@ public class GgUiPassword extends javax.swing.JFrame {
                     if (response == JFileChooser.APPROVE_OPTION) {
                         File file = chooserKeyFile.getSelectedFile();
                         if (! filterKey.accept(file)) {
-                            if (GgPassword.desModel) {
+                            if (WaarpPassword.desModel) {
                                 file = new File(file.getAbsoluteFile()+"."+Des.EXTENSION);
                             } else {
                                 file = new File(file.getAbsoluteFile()+"."+Blowfish.EXTENSION);
@@ -545,7 +546,7 @@ public class GgUiPassword extends javax.swing.JFrame {
                         }
                         jTextFieldKeyFile.setText(file.getAbsolutePath());
                         try {
-                            ggPassword.saveKey(file);
+                            waarpPassword.saveKey(file);
                         } catch (CryptoException e) {
                             // TODO Auto-generated catch block
                             e.printStackTrace();
@@ -572,9 +573,9 @@ public class GgUiPassword extends javax.swing.JFrame {
                     if (response == JFileChooser.APPROVE_OPTION) {
                         File file = chooserPwdFile.getSelectedFile();
                         jTextFieldPasswordFile.setText(file.getAbsolutePath());
-                        ggPassword.setPasswordFile(file);
+                        waarpPassword.setPasswordFile(file);
                         try {
-                            ggPassword.loadPasswordFile();
+                            waarpPassword.loadPasswordFile();
                         } catch (CryptoException e) {
                             // TODO Auto-generated catch block
                             e.printStackTrace();
@@ -582,8 +583,8 @@ public class GgUiPassword extends javax.swing.JFrame {
                             // TODO Auto-generated catch block
                             e.printStackTrace();
                         }
-                        setUncryptedPassword(ggPassword.getClearPassword());
-                        jTextFieldCryptedPassword.setText(ggPassword.getCryptedPassword());
+                        setUncryptedPassword(waarpPassword.getClearPassword());
+                        jTextFieldCryptedPassword.setText(waarpPassword.getCryptedPassword());
                         passwordModified = false;
                     }
                 }
@@ -606,12 +607,12 @@ public class GgUiPassword extends javax.swing.JFrame {
                     if (response == JFileChooser.APPROVE_OPTION) {
                         File file = chooserPwdFile.getSelectedFile();
                         if (! filterPwdKey.accept(file)) {
-                            file = new File(file.getAbsoluteFile()+"."+GgPassword.GGPEXTENSION);
+                            file = new File(file.getAbsoluteFile()+"."+WaarpPassword.GGPEXTENSION);
                         }
                         jTextFieldPasswordFile.setText(file.getAbsolutePath());
-                        ggPassword.setPasswordFile(file);
+                        waarpPassword.setPasswordFile(file);
                         try {
-                            ggPassword.savePasswordFile();
+                            waarpPassword.savePasswordFile();
                         } catch (IOException e) {
                             // TODO Auto-generated catch block
                             e.printStackTrace();
@@ -692,7 +693,7 @@ public class GgUiPassword extends javax.swing.JFrame {
                     "the current Key) (Load)\r\n"+
                     "* Then you need to save this password (encrypted) to "+
                     "a File (Save)\r\n\r\n"+
-                    "C) "+GgPassword.HELPOPTIONS);
+                    "C) "+WaarpPassword.HELPOPTIONS);
             jTextPaneHelp.setEditable(false);
             jTextPaneHelp.setBackground(new java.awt.Color(255,255,255));
         }

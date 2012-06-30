@@ -1,8 +1,8 @@
-GoldenGatePassword
+WaarpPassword
 
-  GoldenGatePassword is an helper to construct Password in compatible way for GoldenGate products.
+  WaarpPassword is an helper to construct Password in compatible way for Waarp products.
 
-*GoldenGatePassword
+*WaarpPassword
 
 GUI Usage (or through command line)
 
