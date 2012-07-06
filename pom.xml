@@ -6,7 +6,7 @@
   <name>Waarp Password Management GUI and Console</name>
   <version>1.1.0</version>
   <description>Waarp Password Management GUI and Console</description>
-  <url>http://waarp.github.com/WaarpDigest</url>
+  <url>http://waarp.github.com/WaarpPassword</url>
   <inceptionYear>2009</inceptionYear>
   <parent>
     <groupId>Waarp</groupId>
@@ -15,12 +15,12 @@
   </parent>
   <issueManagement>
 	<system>GitHub</system>
-  	<url>https://github.com/waarp/WaarpDigest/issues/</url>
+  	<url>https://github.com/waarp/WaarpPassword/issues/</url>
   </issueManagement>
   <scm>
-  	<connection>scm:git:git://github.com/waarp/WaarpDigest.git</connection>
-  	<developerConnection>scm:git:git@github.com:YourID/WaarpDigest.git</developerConnection>
-  	<url>https://github.com/waarp/WaarpDigest</url>
+  	<connection>scm:git:git://github.com/waarp/WaarpPassword.git</connection>
+  	<developerConnection>scm:git:git@github.com:YourID/WaarpPassword.git</developerConnection>
+  	<url>https://github.com/waarp/WaarpPassword</url>
   </scm>
   <licenses>
   	<license>
