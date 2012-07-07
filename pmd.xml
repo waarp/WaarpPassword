@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pmd version="4.3" timestamp="2012-07-06T17:50:36.590">
+<pmd version="4.3" timestamp="2012-07-07T21:45:19.800">
 <file name="J:\Git\github\waarp-digest\WaarpPassword\src\main\java\org\waarp\uip\WaarpPassword.java">
 <violation beginline="177" endline="179" begincolumn="9" endcolumn="9" rule="NonThreadSafeSingleton" ruleset="Design Rules" package="org.waarp.uip" class="WaarpPassword" method="loadOptions" externalInfoUrl="http://pmd.sourceforge.net/rules/design.html#NonThreadSafeSingleton" priority="3">
 Singleton is not thread safe
