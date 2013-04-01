@@ -56,6 +56,7 @@ public class WaarpUiPassword extends javax.swing.JFrame {
      * 
      */
     private static final long serialVersionUID = -4276191288898099362L;
+    protected WaarpUiPassword myself;
     private JMenuItem helpMenuItem;
     private JMenu jMenu5;
     private AbstractAction saveAsKeyAction;
@@ -95,7 +96,8 @@ public class WaarpUiPassword extends javax.swing.JFrame {
     private JDialog jDialogHelp;
     private WaarpPassword waarpPassword;
     boolean passwordModified = false;
-
+    boolean extended = false;
+    
     /**
     * Auto-generated main method to display this JFrame
     */
@@ -113,9 +115,31 @@ public class WaarpUiPassword extends javax.swing.JFrame {
         });
     }
 
+    protected WaarpUiPassword(boolean extended_ignore) throws Exception {
+    	this.extended = true;
+        chooserKeyFile = new JFileChooser();
+        filterKey = new FileNameExtensionFilter(
+                "DES or Blowfish Key ("+Des.EXTENSION+", "+Blowfish.EXTENSION+")",
+                Des.EXTENSION, Blowfish.EXTENSION);
+        chooserKeyFile.setFileFilter(filterKey);
+        chooserKeyFile.setFileSelectionMode(JFileChooser.FILES_ONLY);
+
+        chooserPwdFile = new JFileChooser();
+        filterPwdKey = new FileNameExtensionFilter(
+                "GoldenGate Password Files ("+WaarpPassword.GGPEXTENSION+")",
+                WaarpPassword.GGPEXTENSION);
+        chooserPwdFile.setFileFilter(filterPwdKey);
+        chooserPwdFile.setFileSelectionMode(JFileChooser.FILES_ONLY);
+
+        waarpPassword = new WaarpPassword();
+
+        initGUI();
+        initFromGgPassword();
+    }
+
     public WaarpUiPassword() {
         super();
-
+        myself = this;
         chooserKeyFile = new JFileChooser();
         filterKey = new FileNameExtensionFilter(
                 "DES or Blowfish Key ("+Des.EXTENSION+", "+Blowfish.EXTENSION+")",
@@ -160,26 +184,31 @@ public class WaarpUiPassword extends javax.swing.JFrame {
         }
     }
 
+    public void exit(ActionEvent evt) {
+        if (passwordModified) {
+            getSavePaswdAction().actionPerformed(evt);
+        }
+        if (extended) {
+        	myself.dispose();
+        } else {
+        	System.exit(1);
+        }
+    }
+    
     private void initGUI() {
         try {
             GroupLayout thisLayout = new GroupLayout((JComponent)getContentPane());
             getContentPane().setLayout(thisLayout);
             this.addWindowListener(new WindowAdapter() {
                 public void windowClosing(WindowEvent evt) {
-                    if (passwordModified) {
-                        getSavePaswdAction().actionPerformed(null);
-                    }
-                    System.exit(1);
+                	myself.exit(null);
                 }
                 public void windowClosed(WindowEvent evt) {
-                    if (passwordModified) {
-                        getSavePaswdAction().actionPerformed(null);
-                    }
-                    System.exit(1);
+                	myself.exit(null);
                 }
             });
             this.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
-            this.setTitle("GoldenGate Password GUI");
+            this.setTitle("Waarp Password GUI");
             this.setLocale(new java.util.Locale("en", "GB"));
             {
                 jTextFieldKeyFile = new JTextField();
@@ -405,11 +434,7 @@ public class WaarpUiPassword extends javax.swing.JFrame {
                 private static final long serialVersionUID = 7484447837851868127L;
 
                 public void actionPerformed(ActionEvent evt) {
-                    //TODO FIXME Add control on exit (save)
-                    if (passwordModified) {
-                        getSavePaswdAction().actionPerformed(evt);
-                    }
-                    System.exit(1);
+                	myself.exit(evt);
                 }
             };
         }
@@ -645,7 +670,7 @@ public class WaarpUiPassword extends javax.swing.JFrame {
         if(jDialogHelp == null) {
             jDialogHelp = new JDialog(this);
             GroupLayout jDialogHelpLayout = new GroupLayout((JComponent)jDialogHelp.getContentPane());
-            jDialogHelp.setLayout(jDialogHelpLayout);
+            jDialogHelp.getContentPane().setLayout(jDialogHelpLayout);
             jDialogHelp.getContentPane().setBackground(new java.awt.Color(255,255,255));
             jDialogHelp.setPreferredSize(new java.awt.Dimension(670, 479));
             jDialogHelp.setSize(670, 479);
