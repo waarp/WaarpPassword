@@ -33,6 +33,7 @@ import org.waarp.common.crypto.Blowfish;
 import org.waarp.common.crypto.Des;
 import org.waarp.common.crypto.KeyObject;
 import org.waarp.common.exception.CryptoException;
+import org.waarp.common.utility.WaarpStringUtils;
 
 /**
  * Console Command Line Main class to provide Password Management for GoldenGate Products.
@@ -327,9 +328,12 @@ public class WaarpPassword {
      */
     public void savePasswordFile() throws IOException {
         FileOutputStream outputStream = new FileOutputStream(passwordFile);
-        outputStream.write(cryptedPassword.getBytes());
-        outputStream.flush();
-        outputStream.close();
+        try {
+	        outputStream.write(cryptedPassword.getBytes(WaarpStringUtils.UTF8));
+	        outputStream.flush();
+        } finally {
+        	outputStream.close();
+        }
     }
 
     /**
@@ -342,10 +346,18 @@ public class WaarpPassword {
             byte []key = new byte[len];
             FileInputStream inputStream = null;
             inputStream = new FileInputStream(passwordFile);
-            DataInputStream dis = new DataInputStream(inputStream);
-            dis.readFully(key);
-            dis.close();
-            setCryptedPassword(new String(key));
+            DataInputStream dis = null;
+            try {
+	            dis = new DataInputStream(inputStream);
+	            dis.readFully(key);
+            } finally {
+            	if (dis != null) {
+            		dis.close();
+            	} else {
+            		inputStream.close();
+            	}
+            }
+            setCryptedPassword(new String(key, WaarpStringUtils.UTF8));
         } else {
             throw new CryptoException("Cannot read crypto file");
         }

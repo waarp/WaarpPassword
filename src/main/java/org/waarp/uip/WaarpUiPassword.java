@@ -240,10 +240,10 @@ public class WaarpUiPassword extends javax.swing.JFrame {
                         jPasswordFieldTxt = new JTextField();
                         jPasswordFieldTxt.addFocusListener(new FocusAdapter() {
                             public void focusLost(FocusEvent evt) {
-                                String paswd = new String(jPasswordFieldTxt.getText());
+                                String paswd = jPasswordFieldTxt.getText();
                                 if (! paswd.equals(waarpPassword.getClearPassword())) {
                                     try {
-                                        waarpPassword.setClearPassword(new String(paswd));
+                                        waarpPassword.setClearPassword(paswd);
                                     } catch (Exception e) {
                                         // TODO Auto-generated catch block
                                         e.printStackTrace();
@@ -260,7 +260,7 @@ public class WaarpUiPassword extends javax.swing.JFrame {
                                 String paswd = new String(jPasswordField.getPassword());
                                 if (! paswd.equals(waarpPassword.getClearPassword())) {
                                     try {
-                                        waarpPassword.setClearPassword(new String(paswd));
+                                        waarpPassword.setClearPassword(paswd);
                                     } catch (Exception e) {
                                         // TODO Auto-generated catch block
                                         e.printStackTrace();
