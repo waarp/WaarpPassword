@@ -226,7 +226,7 @@ public class WaarpPassword {
 
     private String readString() {
         String read = "";
-        InputStreamReader input = new InputStreamReader(System.in);
+        InputStreamReader input = new InputStreamReader(System.in, WaarpStringUtils.UTF8);
         BufferedReader reader = new BufferedReader(input);
         try {
             read = reader.readLine();
