@@ -20,7 +20,6 @@
  */
 package org.waarp.uip;
 
-
 import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.File;
@@ -44,16 +43,16 @@ import org.waarp.common.utility.WaarpStringUtils;
 public class WaarpPassword {
     public static boolean desModel = true;
     public static boolean clearPasswordView = false;
-    public static String HELPOPTIONS = "Options available\r\n"+
-        "* -ki file to specify the Key File by default\r\n"+
-        "* -ko file to specify a new Key File to build and save\r\n\r\n"+
-        "* -des to specify DES format (default)\r\n"+
-        "* -blf to specify BlowFish format\r\n\r\n"+
-        "* -pi file to specify a GGP File by default(password)\r\n"+
-        "* -pwd to specify a clear ggp password as entry\r\n"+
-        "* -cpwd to specify a crypted ggp password as entry\r\n"+
-        "* -po file to specify a GGP File as output for the password\r\n"+
-        "* -clear to specify uncrypted password shown as clear text";
+    public static String HELPOPTIONS = "Options available\r\n" +
+            "* -ki file to specify the Key File by default\r\n" +
+            "* -ko file to specify a new Key File to build and save\r\n\r\n" +
+            "* -des to specify DES format (default)\r\n" +
+            "* -blf to specify BlowFish format\r\n\r\n" +
+            "* -pi file to specify a GGP File by default(password)\r\n" +
+            "* -pwd to specify a clear ggp password as entry\r\n" +
+            "* -cpwd to specify a crypted ggp password as entry\r\n" +
+            "* -po file to specify a GGP File as output for the password\r\n" +
+            "* -clear to specify uncrypted password shown as clear text";
     public static String GGPEXTENSION = "ggp";
     public static String ki = null;
     public static String ko = null;
@@ -69,14 +68,13 @@ public class WaarpPassword {
 
     private KeyObject currentKey;
 
-
     /**
      * @param args
      * @throws Exception
      */
     public static void main(String[] args) throws Exception {
         // TODO Auto-generated method stub
-        if (! WaarpPassword.loadOptions(args)) {
+        if (!WaarpPassword.loadOptions(args)) {
             // Bad options
             System.exit(2);
         }
@@ -99,8 +97,8 @@ public class WaarpPassword {
                 waarpPassword.savePasswordFile();
             }
             if (clearPasswordView) {
-                System.err.println("ClearPwd: "+waarpPassword.getClearPassword());
-                System.err.println("CryptedPwd: "+waarpPassword.getCryptedPassword());
+                System.err.println("ClearPwd: " + waarpPassword.getClearPassword());
+                System.err.println("CryptedPwd: " + waarpPassword.getCryptedPassword());
             }
         }
     }
@@ -167,7 +165,7 @@ public class WaarpPassword {
             } else if (args[i].equalsIgnoreCase("-clear")) {
                 clearPasswordView = true;
             } else {
-                System.err.println("Unknown option: "+args[i]);
+                System.err.println("Unknown option: " + args[i]);
                 return false;
             }
         }
@@ -218,9 +216,9 @@ public class WaarpPassword {
         }
         if (clearPassword != null) {
             if (clearPasswordView) {
-                System.err.println("ClearPwd: "+getClearPassword());
+                System.err.println("ClearPwd: " + getClearPassword());
             }
-            System.err.println("CryptedPwd: "+getCryptedPassword());
+            System.err.println("CryptedPwd: " + getCryptedPassword());
         }
     }
 
@@ -239,6 +237,7 @@ public class WaarpPassword {
 
     /**
      * Create a new Key but do not save it on file
+     * 
      * @throws Exception
      */
     public void createNewKey() throws Exception {
@@ -251,9 +250,11 @@ public class WaarpPassword {
             setClearPassword(clearPassword);
         }
     }
+
     /**
      *
-     * @param file source file
+     * @param file
+     *            source file
      * @throws CryptoException
      */
     public void loadKey(File file) throws CryptoException {
@@ -267,7 +268,8 @@ public class WaarpPassword {
 
     /**
      *
-     * @param file destination file, if null previously set file is used
+     * @param file
+     *            destination file, if null previously set file is used
      * @throws CryptoException
      */
     public void saveKey(File file) throws CryptoException {
@@ -299,6 +301,7 @@ public class WaarpPassword {
 
     /**
      * Set the new password and its crypted value
+     * 
      * @param passwd
      * @throws Exception
      */
@@ -315,7 +318,8 @@ public class WaarpPassword {
     }
 
     /**
-     * @param passwordFile the passwordFile to set
+     * @param passwordFile
+     *            the passwordFile to set
      * @throws IOException
      */
     public void setPasswordFile(File passwordFile) {
@@ -324,44 +328,47 @@ public class WaarpPassword {
 
     /**
      * Save the Crypted Paswword to the File
+     * 
      * @throws IOException
      */
     public void savePasswordFile() throws IOException {
         FileOutputStream outputStream = new FileOutputStream(passwordFile);
         try {
-	        outputStream.write(cryptedPassword.getBytes(WaarpStringUtils.UTF8));
-	        outputStream.flush();
+            outputStream.write(cryptedPassword.getBytes(WaarpStringUtils.UTF8));
+            outputStream.flush();
         } finally {
-        	outputStream.close();
+            outputStream.close();
         }
     }
 
     /**
      * Load the crypted password from the file
+     * 
      * @throws Exception
      */
     public void loadPasswordFile() throws Exception {
         if (passwordFile.canRead()) {
-            int len = (int)passwordFile.length();
-            byte []key = new byte[len];
+            int len = (int) passwordFile.length();
+            byte[] key = new byte[len];
             FileInputStream inputStream = null;
             inputStream = new FileInputStream(passwordFile);
             DataInputStream dis = null;
             try {
-	            dis = new DataInputStream(inputStream);
-	            dis.readFully(key);
+                dis = new DataInputStream(inputStream);
+                dis.readFully(key);
             } finally {
-            	if (dis != null) {
-            		dis.close();
-            	} else {
-            		inputStream.close();
-            	}
+                if (dis != null) {
+                    dis.close();
+                } else {
+                    inputStream.close();
+                }
             }
             setCryptedPassword(new String(key, WaarpStringUtils.UTF8));
         } else {
             throw new CryptoException("Cannot read crypto file");
         }
     }
+
     /**
      * @return the cryptedPassword
      */
@@ -370,7 +377,8 @@ public class WaarpPassword {
     }
 
     /**
-     * @param cryptedPassword the cryptedPassword to set
+     * @param cryptedPassword
+     *            the cryptedPassword to set
      * @throws Exception
      */
     public void setCryptedPassword(String cryptedPassword) throws Exception {

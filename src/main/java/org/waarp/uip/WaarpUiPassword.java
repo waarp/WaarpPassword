@@ -39,17 +39,17 @@ import org.waarp.common.exception.CryptoException;
 /**
  * GUI for GoldenGate Password Management for GoldenGate products.
  *
-* This code was edited or generated using CloudGarden's Jigloo
-* SWT/Swing GUI Builder, which is free for non-commercial
-* use. If Jigloo is being used commercially (ie, by a corporation,
-* company or business for any purpose whatever) then you
-* should purchase a license for each developer using Jigloo.
-* Please visit www.cloudgarden.com for details.
-* Use of Jigloo implies acceptance of these licensing terms.
-* A COMMERCIAL LICENSE HAS NOT BEEN PURCHASED FOR
-* THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
-* LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
-*/
+ * This code was edited or generated using CloudGarden's Jigloo
+ * SWT/Swing GUI Builder, which is free for non-commercial
+ * use. If Jigloo is being used commercially (ie, by a corporation,
+ * company or business for any purpose whatever) then you
+ * should purchase a license for each developer using Jigloo.
+ * Please visit www.cloudgarden.com for details.
+ * Use of Jigloo implies acceptance of these licensing terms.
+ * A COMMERCIAL LICENSE HAS NOT BEEN PURCHASED FOR
+ * THIS MACHINE, SO JIGLOO OR THIS CODE CANNOT BE USED
+ * LEGALLY FOR ANY CORPORATE OR COMMERCIAL PURPOSE.
+ */
 public class WaarpUiPassword extends javax.swing.JFrame {
 
     /**
@@ -97,12 +97,12 @@ public class WaarpUiPassword extends javax.swing.JFrame {
     private WaarpPassword waarpPassword;
     boolean passwordModified = false;
     boolean extended = false;
-    
+
     /**
-    * Auto-generated main method to display this JFrame
-    */
+     * Auto-generated main method to display this JFrame
+     */
     public static void main(String[] args) {
-        if (! WaarpPassword.loadOptions(args)) {
+        if (!WaarpPassword.loadOptions(args)) {
             // Bad options
             System.exit(2);
         }
@@ -116,17 +116,17 @@ public class WaarpUiPassword extends javax.swing.JFrame {
     }
 
     protected WaarpUiPassword(boolean extended_ignore) throws Exception {
-    	this.extended = true;
+        this.extended = true;
         chooserKeyFile = new JFileChooser();
         filterKey = new FileNameExtensionFilter(
-                "DES or Blowfish Key ("+Des.EXTENSION+", "+Blowfish.EXTENSION+")",
+                "DES or Blowfish Key (" + Des.EXTENSION + ", " + Blowfish.EXTENSION + ")",
                 Des.EXTENSION, Blowfish.EXTENSION);
         chooserKeyFile.setFileFilter(filterKey);
         chooserKeyFile.setFileSelectionMode(JFileChooser.FILES_ONLY);
 
         chooserPwdFile = new JFileChooser();
         filterPwdKey = new FileNameExtensionFilter(
-                "GoldenGate Password Files ("+WaarpPassword.GGPEXTENSION+")",
+                "GoldenGate Password Files (" + WaarpPassword.GGPEXTENSION + ")",
                 WaarpPassword.GGPEXTENSION);
         chooserPwdFile.setFileFilter(filterPwdKey);
         chooserPwdFile.setFileSelectionMode(JFileChooser.FILES_ONLY);
@@ -142,14 +142,14 @@ public class WaarpUiPassword extends javax.swing.JFrame {
         myself = this;
         chooserKeyFile = new JFileChooser();
         filterKey = new FileNameExtensionFilter(
-                "DES or Blowfish Key ("+Des.EXTENSION+", "+Blowfish.EXTENSION+")",
+                "DES or Blowfish Key (" + Des.EXTENSION + ", " + Blowfish.EXTENSION + ")",
                 Des.EXTENSION, Blowfish.EXTENSION);
         chooserKeyFile.setFileFilter(filterKey);
         chooserKeyFile.setFileSelectionMode(JFileChooser.FILES_ONLY);
 
         chooserPwdFile = new JFileChooser();
         filterPwdKey = new FileNameExtensionFilter(
-                "GoldenGate Password Files ("+WaarpPassword.GGPEXTENSION+")",
+                "GoldenGate Password Files (" + WaarpPassword.GGPEXTENSION + ")",
                 WaarpPassword.GGPEXTENSION);
         chooserPwdFile.setFileFilter(filterPwdKey);
         chooserPwdFile.setFileSelectionMode(JFileChooser.FILES_ONLY);
@@ -189,22 +189,23 @@ public class WaarpUiPassword extends javax.swing.JFrame {
             getSavePaswdAction().actionPerformed(evt);
         }
         if (extended) {
-        	myself.dispose();
+            myself.dispose();
         } else {
-        	System.exit(1);
+            System.exit(1);
         }
     }
-    
+
     private void initGUI() {
         try {
-            GroupLayout thisLayout = new GroupLayout((JComponent)getContentPane());
+            GroupLayout thisLayout = new GroupLayout((JComponent) getContentPane());
             getContentPane().setLayout(thisLayout);
             this.addWindowListener(new WindowAdapter() {
                 public void windowClosing(WindowEvent evt) {
-                	myself.exit(null);
+                    myself.exit(null);
                 }
+
                 public void windowClosed(WindowEvent evt) {
-                	myself.exit(null);
+                    myself.exit(null);
                 }
             });
             this.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -215,14 +216,14 @@ public class WaarpUiPassword extends javax.swing.JFrame {
                 jTextFieldKeyFile.setText("Key File");
                 jTextFieldKeyFile.setEditable(false);
                 jTextFieldKeyFile.setBorder(BorderFactory.createCompoundBorder(
-                        BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(0,0,0)),
+                        BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(0, 0, 0)),
                         BorderFactory.createCompoundBorder(
                                 null,
                                 null)));
             }
             {
                 jPanel1 = new JPanel();
-                GroupLayout jPanel1Layout = new GroupLayout((JComponent)jPanel1);
+                GroupLayout jPanel1Layout = new GroupLayout((JComponent) jPanel1);
                 jPanel1.setLayout(jPanel1Layout);
                 jPanel1.setBorder(BorderFactory.createBevelBorder(BevelBorder.LOWERED));
                 {
@@ -230,7 +231,7 @@ public class WaarpUiPassword extends javax.swing.JFrame {
                     jTextFieldPasswordFile.setText("Password File");
                     jTextFieldPasswordFile.setEditable(false);
                     jTextFieldPasswordFile.setBorder(BorderFactory.createCompoundBorder(
-                            BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(0,0,0)),
+                            BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(0, 0, 0)),
                             BorderFactory.createCompoundBorder(
                                     null,
                                     null)));
@@ -241,7 +242,7 @@ public class WaarpUiPassword extends javax.swing.JFrame {
                         jPasswordFieldTxt.addFocusListener(new FocusAdapter() {
                             public void focusLost(FocusEvent evt) {
                                 String paswd = jPasswordFieldTxt.getText();
-                                if (! paswd.equals(waarpPassword.getClearPassword())) {
+                                if (!paswd.equals(waarpPassword.getClearPassword())) {
                                     try {
                                         waarpPassword.setClearPassword(paswd);
                                     } catch (Exception e) {
@@ -258,7 +259,7 @@ public class WaarpUiPassword extends javax.swing.JFrame {
                         jPasswordField.addFocusListener(new FocusAdapter() {
                             public void focusLost(FocusEvent evt) {
                                 String paswd = new String(jPasswordField.getPassword());
-                                if (! paswd.equals(waarpPassword.getClearPassword())) {
+                                if (!paswd.equals(waarpPassword.getClearPassword())) {
                                     try {
                                         waarpPassword.setClearPassword(paswd);
                                     } catch (Exception e) {
@@ -277,7 +278,7 @@ public class WaarpUiPassword extends javax.swing.JFrame {
                     jTextFieldCryptedPassword.addFocusListener(new FocusAdapter() {
                         public void focusLost(FocusEvent evt) {
                             String paswd = jTextFieldCryptedPassword.getText();
-                            if (! paswd.equals(waarpPassword.getCryptedPassword())) {
+                            if (!paswd.equals(waarpPassword.getCryptedPassword())) {
                                 try {
                                     waarpPassword.setCryptedPassword(paswd);
                                 } catch (Exception e1) {
@@ -290,61 +291,87 @@ public class WaarpUiPassword extends javax.swing.JFrame {
                             }
                         }
                     }
-                    );
+                            );
                 }
                 if (WaarpPassword.clearPasswordView) {
-                    jPanel1Layout.setHorizontalGroup(jPanel1Layout.createSequentialGroup()
+                    jPanel1Layout.setHorizontalGroup(jPanel1Layout
+                            .createSequentialGroup()
                             .addContainerGap()
-                            .addGroup(jPanel1Layout.createParallelGroup()
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jTextFieldPasswordFile, GroupLayout.PREFERRED_SIZE, 340, GroupLayout.PREFERRED_SIZE)
-                                    .addGap(0, 0, Short.MAX_VALUE))
-                                .addComponent(jPasswordFieldTxt, GroupLayout.Alignment.LEADING, 0, 341, Short.MAX_VALUE)
-                                .addComponent(jTextFieldCryptedPassword, GroupLayout.Alignment.LEADING, 0, 338, Short.MAX_VALUE))
+                            .addGroup(
+                                    jPanel1Layout
+                                            .createParallelGroup()
+                                            .addGroup(
+                                                    jPanel1Layout
+                                                            .createSequentialGroup()
+                                                            .addComponent(jTextFieldPasswordFile,
+                                                                    GroupLayout.PREFERRED_SIZE, 340,
+                                                                    GroupLayout.PREFERRED_SIZE)
+                                                            .addGap(0, 0, Short.MAX_VALUE))
+                                            .addComponent(jPasswordFieldTxt, GroupLayout.Alignment.LEADING, 0, 341,
+                                                    Short.MAX_VALUE)
+                                            .addComponent(jTextFieldCryptedPassword, GroupLayout.Alignment.LEADING, 0,
+                                                    338, Short.MAX_VALUE))
                             .addContainerGap());
-                        jPanel1Layout.setVerticalGroup(jPanel1Layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(jTextFieldPasswordFile, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)
-                            .addGap(18)
-                            .addComponent(jPasswordFieldTxt, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED, 1, Short.MAX_VALUE)
-                            .addComponent(jTextFieldCryptedPassword, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)
-                            .addContainerGap());
+                    jPanel1Layout
+                            .setVerticalGroup(jPanel1Layout
+                                    .createSequentialGroup()
+                                    .addContainerGap()
+                                    .addComponent(jTextFieldPasswordFile, GroupLayout.PREFERRED_SIZE, 28,
+                                            GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18)
+                                    .addComponent(jPasswordFieldTxt, GroupLayout.PREFERRED_SIZE, 26,
+                                            GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED, 1, Short.MAX_VALUE)
+                                    .addComponent(jTextFieldCryptedPassword, GroupLayout.PREFERRED_SIZE, 28,
+                                            GroupLayout.PREFERRED_SIZE)
+                                    .addContainerGap());
                 } else {
-                    jPanel1Layout.setHorizontalGroup(jPanel1Layout.createSequentialGroup()
+                    jPanel1Layout.setHorizontalGroup(jPanel1Layout
+                            .createSequentialGroup()
                             .addContainerGap()
-                            .addGroup(jPanel1Layout.createParallelGroup()
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jTextFieldPasswordFile, GroupLayout.PREFERRED_SIZE, 340, GroupLayout.PREFERRED_SIZE)
-                                    .addGap(0, 0, Short.MAX_VALUE))
-                                .addComponent(jPasswordField, GroupLayout.Alignment.LEADING, 0, 341, Short.MAX_VALUE)
-                                .addComponent(jTextFieldCryptedPassword, GroupLayout.Alignment.LEADING, 0, 338, Short.MAX_VALUE))
+                            .addGroup(
+                                    jPanel1Layout
+                                            .createParallelGroup()
+                                            .addGroup(
+                                                    jPanel1Layout
+                                                            .createSequentialGroup()
+                                                            .addComponent(jTextFieldPasswordFile,
+                                                                    GroupLayout.PREFERRED_SIZE, 340,
+                                                                    GroupLayout.PREFERRED_SIZE)
+                                                            .addGap(0, 0, Short.MAX_VALUE))
+                                            .addComponent(jPasswordField, GroupLayout.Alignment.LEADING, 0, 341,
+                                                    Short.MAX_VALUE)
+                                            .addComponent(jTextFieldCryptedPassword, GroupLayout.Alignment.LEADING, 0,
+                                                    338, Short.MAX_VALUE))
                             .addContainerGap());
-                        jPanel1Layout.setVerticalGroup(jPanel1Layout.createSequentialGroup()
+                    jPanel1Layout.setVerticalGroup(jPanel1Layout
+                            .createSequentialGroup()
                             .addContainerGap()
-                            .addComponent(jTextFieldPasswordFile, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldPasswordFile, GroupLayout.PREFERRED_SIZE, 28,
+                                    GroupLayout.PREFERRED_SIZE)
                             .addGap(18)
                             .addComponent(jPasswordField, GroupLayout.PREFERRED_SIZE, 26, GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED, 1, Short.MAX_VALUE)
-                            .addComponent(jTextFieldCryptedPassword, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldCryptedPassword, GroupLayout.PREFERRED_SIZE, 28,
+                                    GroupLayout.PREFERRED_SIZE)
                             .addContainerGap());
                 }
             }
             thisLayout.setVerticalGroup(thisLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jTextFieldKeyFile, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)
-                .addGap(21)
-                .addComponent(jPanel1, GroupLayout.PREFERRED_SIZE, 143, GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(31, Short.MAX_VALUE));
+                    .addContainerGap()
+                    .addComponent(jTextFieldKeyFile, GroupLayout.PREFERRED_SIZE, 28, GroupLayout.PREFERRED_SIZE)
+                    .addGap(21)
+                    .addComponent(jPanel1, GroupLayout.PREFERRED_SIZE, 143, GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(31, Short.MAX_VALUE));
             thisLayout.setHorizontalGroup(thisLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(thisLayout.createParallelGroup()
-                    .addComponent(jPanel1, GroupLayout.Alignment.LEADING, 0, 366, Short.MAX_VALUE)
-                    .addGroup(GroupLayout.Alignment.LEADING, thisLayout.createSequentialGroup()
-                        .addGap(7)
-                        .addComponent(jTextFieldKeyFile, 0, 353, Short.MAX_VALUE)
-                        .addGap(6)))
-                .addGap(6));
+                    .addContainerGap()
+                    .addGroup(thisLayout.createParallelGroup()
+                            .addComponent(jPanel1, GroupLayout.Alignment.LEADING, 0, 366, Short.MAX_VALUE)
+                            .addGroup(GroupLayout.Alignment.LEADING, thisLayout.createSequentialGroup()
+                                    .addGap(7)
+                                    .addComponent(jTextFieldKeyFile, 0, 353, Short.MAX_VALUE)
+                                    .addGap(6)))
+                    .addGap(6));
             setSize(400, 300);
             {
                 jMenuBar1 = new JMenuBar();
@@ -426,7 +453,7 @@ public class WaarpUiPassword extends javax.swing.JFrame {
     }
 
     private AbstractAction getExitAction() {
-        if(exitAction == null) {
+        if (exitAction == null) {
             exitAction = new AbstractAction("Exit", null) {
                 /**
                  * 
@@ -434,7 +461,7 @@ public class WaarpUiPassword extends javax.swing.JFrame {
                 private static final long serialVersionUID = 7484447837851868127L;
 
                 public void actionPerformed(ActionEvent evt) {
-                	myself.exit(evt);
+                    myself.exit(evt);
                 }
             };
         }
@@ -473,8 +500,9 @@ public class WaarpUiPassword extends javax.swing.JFrame {
         saveMenuItem.setEnabled(true);
         jMenuPassword.setEnabled(true);
     }
+
     private AbstractAction getOpenKeyAction() {
-        if(openKeyAction == null) {
+        if (openKeyAction == null) {
             openKeyAction = new AbstractAction("Open Key", null) {
                 /**
                  * 
@@ -505,7 +533,7 @@ public class WaarpUiPassword extends javax.swing.JFrame {
     }
 
     private AbstractAction getNewKeyAction() {
-        if(newKeyAction == null) {
+        if (newKeyAction == null) {
             newKeyAction = new AbstractAction("New Key", null) {
                 /**
                  * 
@@ -528,7 +556,7 @@ public class WaarpUiPassword extends javax.swing.JFrame {
     }
 
     private AbstractAction getSaveKeyAction() {
-        if(saveKeyAction == null) {
+        if (saveKeyAction == null) {
             saveKeyAction = new AbstractAction("Save Key", null) {
                 /**
                  * 
@@ -550,7 +578,7 @@ public class WaarpUiPassword extends javax.swing.JFrame {
     }
 
     private AbstractAction getSaveAsKeyAction() {
-        if(saveAsKeyAction == null) {
+        if (saveAsKeyAction == null) {
             saveAsKeyAction = new AbstractAction("Save Key As...", null) {
                 /**
                  * 
@@ -562,11 +590,11 @@ public class WaarpUiPassword extends javax.swing.JFrame {
                     int response = chooserKeyFile.showSaveDialog(rootPane);
                     if (response == JFileChooser.APPROVE_OPTION) {
                         File file = chooserKeyFile.getSelectedFile();
-                        if (! filterKey.accept(file)) {
+                        if (!filterKey.accept(file)) {
                             if (WaarpPassword.desModel) {
-                                file = new File(file.getAbsoluteFile()+"."+Des.EXTENSION);
+                                file = new File(file.getAbsoluteFile() + "." + Des.EXTENSION);
                             } else {
-                                file = new File(file.getAbsoluteFile()+"."+Blowfish.EXTENSION);
+                                file = new File(file.getAbsoluteFile() + "." + Blowfish.EXTENSION);
                             }
                         }
                         jTextFieldKeyFile.setText(file.getAbsolutePath());
@@ -585,7 +613,7 @@ public class WaarpUiPassword extends javax.swing.JFrame {
     }
 
     private AbstractAction getLoadPswdAction() {
-        if(loadPswdAction == null) {
+        if (loadPswdAction == null) {
             loadPswdAction = new AbstractAction("Load", null) {
                 /**
                  * 
@@ -619,20 +647,20 @@ public class WaarpUiPassword extends javax.swing.JFrame {
     }
 
     private AbstractAction getSavePaswdAction() {
-        if(savePaswdAction == null) {
-           savePaswdAction = new AbstractAction("Save", null) {
+        if (savePaswdAction == null) {
+            savePaswdAction = new AbstractAction("Save", null) {
                 /**
              * 
              */
-            private static final long serialVersionUID = -5712120697650940845L;
+                private static final long serialVersionUID = -5712120697650940845L;
 
                 public void actionPerformed(ActionEvent evt) {
                     chooserPwdFile.setDialogType(JFileChooser.SAVE_DIALOG);
                     int response = chooserPwdFile.showSaveDialog(rootPane);
                     if (response == JFileChooser.APPROVE_OPTION) {
                         File file = chooserPwdFile.getSelectedFile();
-                        if (! filterPwdKey.accept(file)) {
-                            file = new File(file.getAbsoluteFile()+"."+WaarpPassword.GGPEXTENSION);
+                        if (!filterPwdKey.accept(file)) {
+                            file = new File(file.getAbsoluteFile() + "." + WaarpPassword.GGPEXTENSION);
                         }
                         jTextFieldPasswordFile.setText(file.getAbsolutePath());
                         waarpPassword.setPasswordFile(file);
@@ -651,7 +679,7 @@ public class WaarpUiPassword extends javax.swing.JFrame {
     }
 
     private AbstractAction getHelpAction() {
-        if(helpAction == null) {
+        if (helpAction == null) {
             helpAction = new AbstractAction("Help", null) {
                 /**
                  * 
@@ -667,33 +695,43 @@ public class WaarpUiPassword extends javax.swing.JFrame {
     }
 
     private JDialog getJDialogHelp() {
-        if(jDialogHelp == null) {
+        if (jDialogHelp == null) {
             jDialogHelp = new JDialog(this);
-            GroupLayout jDialogHelpLayout = new GroupLayout((JComponent)jDialogHelp.getContentPane());
+            GroupLayout jDialogHelpLayout = new GroupLayout((JComponent) jDialogHelp.getContentPane());
             jDialogHelp.getContentPane().setLayout(jDialogHelpLayout);
-            jDialogHelp.getContentPane().setBackground(new java.awt.Color(255,255,255));
+            jDialogHelp.getContentPane().setBackground(new java.awt.Color(255, 255, 255));
             jDialogHelp.setPreferredSize(new java.awt.Dimension(670, 479));
             jDialogHelp.setSize(670, 479);
-            jDialogHelpLayout.setHorizontalGroup(jDialogHelpLayout.createSequentialGroup()
-                .addContainerGap(27, 27)
-                .addGroup(jDialogHelpLayout.createParallelGroup()
-                    .addComponent(getJTextPaneHelp(), GroupLayout.Alignment.LEADING, 0, 604, Short.MAX_VALUE)
-                    .addGroup(GroupLayout.Alignment.LEADING, jDialogHelpLayout.createSequentialGroup()
-                        .addGap(254)
-                        .addComponent(getJButtonHelp(), GroupLayout.PREFERRED_SIZE, 111, GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 239, Short.MAX_VALUE)))
-                .addContainerGap(23, 23));
-            jDialogHelpLayout.setVerticalGroup(jDialogHelpLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(getJTextPaneHelp(), 0, 395, Short.MAX_VALUE)
-                .addComponent(getJButtonHelp(), GroupLayout.PREFERRED_SIZE, GroupLayout.PREFERRED_SIZE, GroupLayout.PREFERRED_SIZE)
-                .addContainerGap());
+            jDialogHelpLayout.setHorizontalGroup(jDialogHelpLayout
+                    .createSequentialGroup()
+                    .addContainerGap(27, 27)
+                    .addGroup(
+                            jDialogHelpLayout
+                                    .createParallelGroup()
+                                    .addComponent(getJTextPaneHelp(), GroupLayout.Alignment.LEADING, 0, 604,
+                                            Short.MAX_VALUE)
+                                    .addGroup(
+                                            GroupLayout.Alignment.LEADING,
+                                            jDialogHelpLayout
+                                                    .createSequentialGroup()
+                                                    .addGap(254)
+                                                    .addComponent(getJButtonHelp(), GroupLayout.PREFERRED_SIZE, 111,
+                                                            GroupLayout.PREFERRED_SIZE)
+                                                    .addGap(0, 239, Short.MAX_VALUE)))
+                    .addContainerGap(23, 23));
+            jDialogHelpLayout.setVerticalGroup(jDialogHelpLayout
+                    .createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(getJTextPaneHelp(), 0, 395, Short.MAX_VALUE)
+                    .addComponent(getJButtonHelp(), GroupLayout.PREFERRED_SIZE, GroupLayout.PREFERRED_SIZE,
+                            GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap());
         }
         return jDialogHelp;
     }
 
     private JButton getJButtonHelp() {
-        if(jButtonHelp == null) {
+        if (jButtonHelp == null) {
             jButtonHelp = new JButton();
             jButtonHelp.setText("OK");
             jButtonHelp.setAction(getCloseHelpAction());
@@ -702,31 +740,31 @@ public class WaarpUiPassword extends javax.swing.JFrame {
     }
 
     private JTextPane getJTextPaneHelp() {
-        if(jTextPaneHelp == null) {
+        if (jTextPaneHelp == null) {
             jTextPaneHelp = new JTextPane();
-            jTextPaneHelp.setText("                                            "+
-                    "                            GoldenGate GUI Password Tool\r\n\r\n"+
-                    "A) Key for crypto support\r\n\r\n"+
-                    "* First you need to open a Key File (Open) or to create a "+
-                    "New Key File (New Key) and to save it (Save Key As...)\r\n"+
-                    "* You can at any moment save the Key File to a new "+
-                    "Key File (Save Key As...)\r\n\r\n"+
-                    "B) Password with Crypto Key\r\n"+
-                    "* Then you need to get a Password:\r\n"+
-                    "1) Enter a password in the Password field\r\n"+
-                    "2) Load a password from a Password file (compatible with "+
-                    "the current Key) (Load)\r\n"+
-                    "* Then you need to save this password (encrypted) to "+
-                    "a File (Save)\r\n\r\n"+
-                    "C) "+WaarpPassword.HELPOPTIONS);
+            jTextPaneHelp.setText("                                            " +
+                    "                            GoldenGate GUI Password Tool\r\n\r\n" +
+                    "A) Key for crypto support\r\n\r\n" +
+                    "* First you need to open a Key File (Open) or to create a " +
+                    "New Key File (New Key) and to save it (Save Key As...)\r\n" +
+                    "* You can at any moment save the Key File to a new " +
+                    "Key File (Save Key As...)\r\n\r\n" +
+                    "B) Password with Crypto Key\r\n" +
+                    "* Then you need to get a Password:\r\n" +
+                    "1) Enter a password in the Password field\r\n" +
+                    "2) Load a password from a Password file (compatible with " +
+                    "the current Key) (Load)\r\n" +
+                    "* Then you need to save this password (encrypted) to " +
+                    "a File (Save)\r\n\r\n" +
+                    "C) " + WaarpPassword.HELPOPTIONS);
             jTextPaneHelp.setEditable(false);
-            jTextPaneHelp.setBackground(new java.awt.Color(255,255,255));
+            jTextPaneHelp.setBackground(new java.awt.Color(255, 255, 255));
         }
         return jTextPaneHelp;
     }
 
     private AbstractAction getCloseHelpAction() {
-        if(closeHelpAction == null) {
+        if (closeHelpAction == null) {
             closeHelpAction = new AbstractAction("Close", null) {
                 /**
                  * 
