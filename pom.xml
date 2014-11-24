@@ -213,8 +213,6 @@
 	          <windowtitle>${project.name} ${project.version} API Reference</windowtitle>
 	          <additionalparam>
 	            -link http://java.sun.com/javase/6/docs/api/
-	            -link http://static.netty.io/3.5/api/
-	            -link http://www.slf4j.org/apidocs/
 
 				-group "Waarp Gui and Console Password Management package" "org.waarp.uip*"
 
