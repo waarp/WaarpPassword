@@ -33,6 +33,7 @@ import org.waarp.common.crypto.Blowfish;
 import org.waarp.common.crypto.Des;
 import org.waarp.common.crypto.KeyObject;
 import org.waarp.common.exception.CryptoException;
+import org.waarp.common.utility.SystemPropertyUtil;
 import org.waarp.common.utility.WaarpStringUtils;
 
 /**
@@ -109,6 +110,11 @@ public class WaarpPassword {
         int i = 0;
         if (args.length == 0) {
             System.err.println(HELPOPTIONS);
+            return false;
+        }
+        if (!SystemPropertyUtil.isFileEncodingCorrect()) {
+            System.err.println("Issue while trying to set UTF-8 as default file encoding: use -Dfile.encoding=UTF-8 as java command argument\n"+
+                    "Currently file.encoding is: " + SystemPropertyUtil.get(SystemPropertyUtil.FILE_ENCODING));
             return false;
         }
         for (i = 0; i < args.length; i++) {
