@@ -5,6 +5,9 @@
 		<author email="fredbregier at free.fr">Frederic Bregier</author>
 	</properties>
 	<body>
+        <release version="1.1.4" date="2015-05-25" description="Fix release">
+            <action dev="Frederic Bregier" type="fix">Fix file.encoding=UTF-8</action>
+        </release>
 		<release version="1.1.3" date="2013-12-14" description="Fix release">
 			<action dev="Frederic Bregier" type="fix">Fix with Findbugs</action>
 		</release>
