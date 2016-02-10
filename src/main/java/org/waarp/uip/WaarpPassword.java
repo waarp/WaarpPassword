@@ -42,9 +42,9 @@ import org.waarp.common.utility.WaarpStringUtils;
  *
  */
 public class WaarpPassword {
-    public static boolean desModel = true;
-    public static boolean clearPasswordView = false;
-    public static String HELPOPTIONS = "Options available\r\n" +
+    static boolean desModel = true;
+    static boolean clearPasswordView = false;
+    static final String HELPOPTIONS = "Options available\r\n" +
             "* -ki file to specify the Key File by default\r\n" +
             "* -ko file to specify a new Key File to build and save\r\n\r\n" +
             "* -des to specify DES format (default)\r\n" +
@@ -54,13 +54,13 @@ public class WaarpPassword {
             "* -cpwd to specify a crypted ggp password as entry\r\n" +
             "* -po file to specify a GGP File as output for the password\r\n" +
             "* -clear to specify uncrypted password shown as clear text";
-    public static String GGPEXTENSION = "ggp";
-    public static String ki = null;
-    public static String ko = null;
-    public static String pi = null;
-    public static String po = null;
-    public static String pwd = null;
-    public static String cpwd = null;
+    static final String GGPEXTENSION = "ggp";
+    static String ki = null;
+    static String ko = null;
+    static String pi = null;
+    static String po = null;
+    static String pwd = null;
+    static String cpwd = null;
 
     private File keyFile = null;
     private File passwordFile = null;
