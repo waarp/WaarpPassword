@@ -4,7 +4,7 @@
   <artifactId>WaarpPassword</artifactId>
   <packaging>jar</packaging>
   <name>Waarp Password Management GUI and Console</name>
-  <version>3.0.5</version>
+  <version>3.0.6</version>
   <description>Waarp Password Management GUI and Console</description>
   <url>http://waarp.github.com/WaarpPassword</url>
   <inceptionYear>2009</inceptionYear>
