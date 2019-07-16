@@ -4,7 +4,7 @@
   <artifactId>WaarpPassword</artifactId>
   <packaging>jar</packaging>
   <name>Waarp Password Management GUI and Console</name>
-  <version>3.0.6</version>
+  <version>3.0.7</version>
   <description>Waarp Password Management GUI and Console</description>
   <url>http://waarp.github.com/WaarpPassword</url>
   <inceptionYear>2009</inceptionYear>
@@ -45,7 +45,7 @@
     <dependency>
   		<groupId>Waarp</groupId>
   		<artifactId>WaarpCommon</artifactId>
-  		<version>3.0.11</version>
+  		<version>3.1.0</version>
   	</dependency>
     <dependency>
       <groupId>ch.qos.logback</groupId>
@@ -70,7 +70,7 @@
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>animal-sniffer-maven-plugin</artifactId>
-        <version>1.15</version>
+        <version>1.16</version>
         <configuration>
           <signature>
             <groupId>org.codehaus.mojo.signature</groupId>
