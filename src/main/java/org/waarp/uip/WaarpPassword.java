@@ -32,6 +32,7 @@ import org.waarp.common.crypto.Blowfish;
 import org.waarp.common.crypto.Des;
 import org.waarp.common.crypto.KeyObject;
 import org.waarp.common.exception.CryptoException;
+import org.waarp.common.utility.DetectionUtils;
 import org.waarp.common.utility.SystemPropertyUtil;
 import org.waarp.common.utility.WaarpStringUtils;
 
@@ -77,12 +78,18 @@ public class WaarpPassword {
         // TODO Auto-generated method stub
         if (!WaarpPassword.loadOptions(args)) {
             // Bad options
+            if (DetectionUtils.isJunit()) {
+                return;
+            }
             System.exit(2);
         }
         WaarpPassword waarpPassword = new WaarpPassword();
         if (po == null && pi == null) {
             // stop
             System.err.println("Key written");
+            if (DetectionUtils.isJunit()) {
+                return;
+            }
             System.exit(0);
         }
         if (waarpPassword.clearPassword == null || waarpPassword.clearPassword.length() == 0) {
@@ -90,6 +97,9 @@ public class WaarpPassword {
             String newp = waarpPassword.readString();
             if (newp == null || newp.length() == 0) {
                 System.err.println("No password as input");
+                if (DetectionUtils.isJunit()) {
+                    return;
+                }
                 System.exit(4);
             }
             waarpPassword.setClearPassword(newp);
@@ -105,6 +115,15 @@ public class WaarpPassword {
     }
 
     public static boolean loadOptions(String[] args) {
+        desModel = true;
+        clearPasswordView = false;
+        ki = null;
+        ko = null;
+        pi = null;
+        po = null;
+        pwd = null;
+        cpwd = null;
+
         int i = 0;
         if (args.length == 0) {
             System.err.println(HELPOPTIONS);
